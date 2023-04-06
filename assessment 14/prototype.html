@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <title>Prototype</title>
+    </head>
+    <body>
+        <p>Q1)Create 2 objects - parent and child. Attach methods to parent and use those methods in child object using parents prototype</p>
+        <p>JS</br><pre>const parent={
+            fname:"PrepBytes",
+            lname:"EA21",
+            fullname:function abc(){
+                console.log(this.fname+" "+this.lname)
+            }
+        }
+        const child={
+            __proto__:parent
+        }
+        child.fullname();
+            </pre></p>
+        <p>OUTPUT</p>
+        <p>Output</br>JS</br>PrepBytes EA21</p><hr>
+
+        <p>Q2)<pre>Write code to explain prototype chaining</pre></p>
+        <p>JS</br><pre>const obj1={
+            name:"PrepBytes"
+        }
+        const obj2={
+            __proto__:obj1,
+            lname:"EA21",
+        }
+        const obj3={
+            __proto__:obj2,
+            age:"20",
+        }
+        console.log(obj3.name);
+        </pre></p>
+        <p>OUTPUT</p>
+        <p>Output</br>JS</br>PrepBytes</p><hr>
+
+        <p>Q3)<pre>Add a method to calculate sum of all elements in Array in array's protype, use that method to calculate sum for multiple arrays</pre></p>
+        <p>JS</br><pre>let arr=[1,2,3,4];
+            const parent={
+                addition:function add(){
+                    let sum=0;
+                    for(i=0;i<arr.length;i++){
+                        sum+=arr[i];
+                    }
+                    console.log(sum);
+                }
+            }
+            const child={
+                __proto__:parent
+            }
+            child.addition();
+        </pre></p>
+        <p>OUTPUT</p>
+        <p>Output</br>JS</br>10</p><hr>
+
+        <p>Q4)Write a JavaScript function to retrieve all the names of object's own and inherited properties.</p>
+        <p>JS</br><pre>function allKeys(obj) {
+            if (!isObject(obj)) return [];
+            var keys = [];
+            for (var key in obj) keys.push(key);
+            return keys;
+        }
+        function isObject(obj) 
+        {
+            var type = typeof obj;
+            return type === 'function' || type === 'object' && !!obj;
+          }
+        function Student(name) {
+          this.name = name;
+        }
+        Student.prototype.rollno = true;
+        console.log(allKeys(new Student("Sara")));</pre></p>
+        <p>OUTPUT</p>
+        <p>Output</br>JS</br>[name, rollno]</p><hr>
+
+        
